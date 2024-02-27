@@ -21,6 +21,9 @@ abbr --add pas pass edit
 abbr --add syu sudo pacman -Syu
 abbr --add pac sudo pacman -S
 
+abbr --add l exa -lh
+abbr --add la exa -lah
+
 abbr --add pw openssl rand -base64 20
 abbr --add vpn sudo openvpn ovpn/secloud-vpn.ovpn
 
