@@ -30,7 +30,7 @@ abbr --add vpn sudo openvpn ovpn/secloud-vpn.ovpn
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
-
+    fzf_key_bindings
 
     zoxide init fish | source
 end
