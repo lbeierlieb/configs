@@ -16,8 +16,11 @@ abbr --add scm svn commit
 abbr --add scmsg svn commit -m
 abbr --add sup svn update
 
+abbr --add pas pass edit
+
 abbr --add syu sudo pacman -Syu
 abbr --add pac sudo pacman -S
+
 abbr --add pw openssl rand -base64 20
 
 
