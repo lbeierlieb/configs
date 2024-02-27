@@ -1,0 +1,40 @@
+
+(	open parenthesis, left parenthesis
+)	close parenthesis, right parenthesis
+[	open bracket
+]	close bracket
+{	open brace
+}	close brace
+
+;	semicolon
+.	period, decimal, dot
+?	question mark
+/	slash, forward slash
+,	comma
+
+–	hyphen, minus, minus sign, dash
+_	underscore
+:	colon
+“	quotation mark, double quotes
+‘	apostrophe, prime, single quote
+=	equals, equal sign
+\	backslash, backward slash
+
+<	less than
+>	greater than
+|	vertical pipe, pipe
+!	exclamation mark, exclamation point, bang
+&	and, ampersand
+*	asterisk
+^	carat, hat, circumflex, exponent symbol
++	addition, plus sign
+$	dollar(s)
+~	tilde
+#	pound, hash, number
+@	at, at sign, at symbol
+%	percent, percent sign, parts per 100
+    `	grave, grave accent, backtick, back quote
+€	euro(s)	Option + Shift + 2 (US)
+
+
+§	section	Option + 6

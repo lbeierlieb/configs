@@ -1,0 +1,87 @@
+#| --------------------------------------------------------------------------
+
+(deflayer name
+  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _                         _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _               _         _    _    _    _
+  _    _    _              _                   _    _    _    _          _    _    _    _    _
+)
+(deflayer name
+  XX   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   bspc  ins  home pgup  nlck kp/  kp*  kp-
+  _    _    _    _    _    _    _    _    _    _    _    _    XX   ret   del  end  pgdn  kp7  kp8  kp9  kp+
+  _    _    _    _    _    _    _    _    _    _    _    _    XX                         kp4  kp5  kp6
+  XX   _    _    _    _    _    _    _    _    _    _    _    _               up         kp1  kp2  kp3  kprt
+  lctl lmet lalt           _                   ralt rmet XX   rctl       left down rght  kp0  kp.
+)
+
+  -------------------------------------------------------------------------- |#
+
+(defcfg
+  input  (device-file "/dev/input/by-id/usb-CHERRY_Mechanical_Keyboard-event-kbd")
+  output (uinput-sink "KMonad kbd"))
+
+(defalias
+  S12 S-102d
+  ec  (tap-hold-next-release 200 e   lctl)
+  tc  (tap-hold-next-release 200 t   lctl)
+  am  (tap-hold-next-release 200 a   lmet)
+  sm  (tap-hold-next-release 200 s   lmet)
+  esa (tap-hold-next-release 200 esc lalt)
+  msa (tap-hold-next-release 200 -   lalt)
+  Msa (tap-hold-next-release 200 S-- lalt)
+  uls (tap-hold-next-release 200 u   (layer-toggle lshift))
+  hrs (tap-hold-next-release 200 h   (layer-toggle rshift)))
+
+(defsrc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup  nlck kp/  kp*  kp-
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    ret   del  end  pgdn  kp7  kp8  kp9  kp+
+  caps a    s    d    f    g    h    j    k    l    ;    '    \                          kp4  kp5  kp6
+  lsft 102d z    x    c    v    b    n    m    ,    .    /    rsft            up         kp1  kp2  kp3  kprt
+  lctl lmet lalt           spc                 ralt rmet cmp  rctl       left down rght  kp0  kp.
+)
+
+(deflayer base
+  XX   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   bspc  ins  home pgup  nlck kp/  kp*  kp-
+  _    ;    ,    .    p    y    f    g    c    r    l    /    XX   ret   del  end  pgdn  kp7  kp8  kp9  kp+
+  @esa @am  o    @ec  @uls i    d    @hrs @tc  n    @sm  @msa XX                         kp4  kp5  kp6
+  XX   102d '    q    j    k    x    b    m    w    v    z    _               up         kp1  kp2  kp3  kprt
+  lctl lmet lalt           spc                 ralt rmet XX   rctl       left down rght  kp0  kp.
+)
+
+(deflayer lshift
+  XX   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   bspc  ins  home pgup  nlck kp/  kp*  kp-
+  _    XX   XX   XX   XX   XX   S-f  S-g  S-c  S-r  S-l  S-/  XX   ret   del  end  pgdn  kp7  kp8  kp9  kp+
+  @esa lmet XX   lctl XX   XX   S-d  S-h  S-t  S-n  S-s  @Msa XX                         kp4  kp5  kp6
+  XX   XX   XX   XX   XX   XX   XX   S-b  S-m  S-w  S-v  S-z  _               up         kp1  kp2  kp3  kprt
+  lctl lmet lalt           tab                 ralt rmet XX   rctl       left down rght  kp0  kp.
+)
+
+(deflayer rshift
+  XX   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   bspc  ins  home pgup  nlck kp/  kp*  kp-
+  _    S-:  102d @S12 S-p  S-y  XX   XX   XX   XX   XX   XX   XX   ret   del  end  pgdn  kp7  kp8  kp9  kp+
+  @esa S-a  S-o  S-e  S-u  S-i  XX   XX   lctl XX   lmet lalt XX                         kp4  kp5  kp6
+  XX   _    S-'  S-q  S-j  S-k  S-x  XX   XX   XX   XX   XX   XX              up         kp1  kp2  kp3  kprt
+  lctl lmet lalt           S-tab               ralt rmet XX   rctl       left down rght  kp0  kp.
+)
+  
+
+#| --------------------------------------------------------------------------
+no shift
+$&[{}(=*)+]!#
+;,.pyfgcrl/@
+aoeuidhtns-\
+'qjkxbmwvz
+
+shift
+~%7531902468`
+:<>PYFGCRL?^
+AOEUIDHTNSS_|
+>"QJKXBMWVZZ
+  -------------------------------------------------------------------------- |#

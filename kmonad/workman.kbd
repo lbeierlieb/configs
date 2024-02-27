@@ -1,0 +1,140 @@
+#| --------------------------------------------------------------------------
+
+(deflayer name
+  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _                         _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _               _         _    _    _    _
+  _    _    _              _                   _    _    _    _          _    _    _    _    _
+)
+(deflayer name
+  XX   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   bspc  ins  home pgup  nlck kp/  kp*  kp-
+  _    _    _    _    _    _    _    _    _    _    _    _    XX   ret   del  end  pgdn  kp7  kp8  kp9  kp+
+  _    _    _    _    _    _    _    _    _    _    _    _    XX                         kp4  kp5  kp6
+  XX   _    _    _    _    _    _    _    _    _    _    _    _               up         kp1  kp2  kp3  kprt
+  lctl lmet lalt           _                   ralt rmet XX   rctl       left down rght  kp0  kp.
+)
+
+  -------------------------------------------------------------------------- |#
+
+#| --------------------------------------------------------------------------
+(defcfg
+  input  (device-file "/dev/input/by-id/usb-Gaming_KB_Gaming_KB-event-kbd")
+  output (uinput-sink "KMonad kbd"))
+(defcfg
+ input  (device-file "/dev/input/by-id/usb-CHERRY_Mechanical_Keyboard-event-kbd")
+ output (uinput-sink "KMonad kbd")
+ allow-cmd true)
+(defcfg
+ input  (device-file "/dev/input/by-id/usb-CHERRY_CHERRY_Keyboard-event-kbd")
+ output (uinput-sink "KMonad kbd")
+ allow-cmd true)
+  -------------------------------------------------------------------------- |#
+  (defcfg
+   input  (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd")
+   output (uinput-sink "KMonad kbd")
+  allow-cmd true)
+
+(defalias
+  S12 S-102d
+  hsh (tap-hold-next-release 200 h   lsft)
+  esh (tap-hold-next-release 200 e   lsft)
+  am  (tap-hold-next-release 200 a   lmet)
+  im  (tap-hold-next-release 200 i   lmet)
+  esa (tap-hold-next-release 200 esc lalt)
+  rsa (tap-hold-next-release 200 ret lalt)
+  tc  (tap-hold-next-release 200 t   lctl)
+  nc  (tap-hold-next-release 200 n   lctl)
+  ssr (tap-hold-next-release 200 s   (layer-toggle syms_right))
+  osl (tap-hold-next-release 200 o   (layer-toggle syms_left))
+  alt (tap-hold-next-release 200 (layer-next specialsmall)  lalt)
+  dnu (tap-hold-next-release 200 d (layer-toggle num))
+  qna (tap-hold-next-release 200 q (layer-toggle nav))
+  ss  (around ralt (tap-macro s s))
+  ue  (around ralt (tap-macro " u))
+  ae  (around ralt (tap-macro " a))
+  oe  (around ralt (tap-macro " o))
+  UE  (around ralt (tap-macro " S-u))
+  AE  (around ralt (tap-macro " S-a))
+  OE  (around ralt (tap-macro " S-o))
+  cmd (cmd-button "setxkbmap -option compose:ralt; xset r rate 300 50")
+  kil (cmd-button "killall kmonad"))
+
+(defsrc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup  nlck kp/  kp*  kp-
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    ret   del  end  pgdn  kp7  kp8  kp9  kp+
+  caps a    s    d    f    g    h    j    k    l    ;    '    \                          kp4  kp5  kp6
+  lsft 102d z    x    c    v    b    n    m    ,    .    /    rsft            up         kp1  kp2  kp3  kprt
+  lctl lmet lalt           spc                 ralt rmet cmp  rctl       left down rght  kp0  kp.
+)
+
+(deflayer base
+  XX   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   @kil  ins  home pgup  nlck kp/  kp*  kp-
+  XX   @qna @dnu r    w    b    j    f    u    p    bspc XX   XX   @cmd  del  end  pgdn  kp7  kp8  kp9  kp+
+  @alt @am  @ssr @hsh @tc  g    y    @nc  @esh @osl @im  @alt XX                         kp4  kp5  kp6
+  lsft XX   z    x    m    c    v    k    l    esc  tab  ret  XX              up         kp1  kp2  kp3  kprt
+  lctl lmet lalt           spc                 XX   XX   XX   XX         left down rght  kp0  kp.
+)
+
+(deflayer num
+  XX   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   _     ins  home pgup  nlck kp/  kp*  kp-
+  XX   XX   XX   XX   XX   XX   XX   1    2    3    _    XX   XX   XX    del  end  pgdn  kp7  kp8  kp9  kp+
+  lalt lmet XX   lsft lctl XX   XX   4    5    6    XX   XX   XX                         kp4  kp5  kp6
+  XX   XX   XX   XX   XX   XX   XX   XX   7    8    9    XX   XX              up         kp1  kp2  kp3  kprt
+  XX   XX   XX             0                   XX   XX   XX   XX         left down rght  kp0  kp.
+)
+
+(deflayer syms_right
+  XX   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   _     ins  home pgup  nlck kp/  kp*  kp-
+  XX   XX   XX   XX   XX   XX   |    {    }    ?    @    XX   XX   XX    del  end  pgdn  kp7  kp8  kp9  kp+
+  lalt lmet XX   lsft lctl XX   &    .    /    +    \    `    XX                         kp4  kp5  kp6
+  XX   XX   XX   XX   XX   XX   XX   $    [    ]    ~    #    XX              up         kp1  kp2  kp3  kprt
+  XX   XX   XX            S--                  XX   XX   XX   XX         left down rght  kp0  kp.
+)
+
+(deflayer syms_left
+  XX   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   _     ins  home pgup  nlck kp/  kp*  kp-
+  XX   <    -    =    >    :    XX   XX   XX   XX   XX   XX   XX   XX    del  end  pgdn  kp7  kp8  kp9  kp+
+  ~    !    \(   \)   ;    *    XX   lctl lsft XX   lmet lalt XX                         kp4  kp5  kp6
+  XX   XX   "    '    %    ,    ^    XX   XX   XX   XX   XX   XX              up         kp1  kp2  kp3  kprt
+  XX   XX   XX            S--                  XX   XX   XX   XX         left down rght  kp0  kp.
+)
+
+(deflayer specialsmall
+  XX   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   _     ins  home pgup  nlck kp/  kp*  kp-
+  XX   @AE  XX   XX   XX   XX   XX   XX   @ue  @OE  XX   XX   XX   XX    del  end  pgdn  kp7  kp8  kp9  kp+
+  XX   @ae  @ss  XX   XX   XX   XX   XX   @UE  @oe  XX   XX   XX                         kp4  kp5  kp6
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX              up         kp1  kp2  kp3  kprt
+  XX   XX   XX             XX                  XX   XX   XX   XX         left down rght  kp0  kp.
+)
+
+(deflayer nav
+  XX   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   _     ins  home pgup  nlck kp/  kp*  kp-
+  XX   XX   XX   XX   XX   XX   home pgdn pgup end  _    XX   XX   XX    del  end  pgdn  kp7  kp8  kp9  kp+
+  XX   XX   XX   lsft lctl XX   left down up   rght del  XX   XX                         kp4  kp5  kp6
+  XX   XX   XX   XX   XX   XX   XX   XX   XX   _    _    XX   XX              up         kp1  kp2  kp3  kprt
+  XX   XX   XX             XX                  XX   XX   XX   XX         left down rght  kp0  kp.
+)
+
+#| --------------------------------------------------------------------------
+no shift
+$&[{}(=*)+]!#
+;,.pyfgcrl/@
+aoeuidhtns-\
+'qjkxbmwvz
+
+shift
+~%7531902468`
+:<>PYFGCRL?^
+AOEUIDHTNSS_|
+>"QJKXBMWVZZ
+  -------------------------------------------------------------------------- |#
