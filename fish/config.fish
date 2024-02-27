@@ -22,6 +22,7 @@ abbr --add syu sudo pacman -Syu
 abbr --add pac sudo pacman -S
 
 abbr --add pw openssl rand -base64 20
+abbr --add vpn sudo openvpn ovpn/secloud-vpn.ovpn
 
 
 if status is-interactive
