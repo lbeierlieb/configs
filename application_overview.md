@@ -17,6 +17,7 @@
 * htop (process monitor)
 * bottom (like htop)
 * dust (disk usage)
+* bandwhich (network monitor)
 
 ## Security
 * pass Password manager
