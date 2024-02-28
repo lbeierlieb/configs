@@ -15,6 +15,8 @@
 * alacritty terminal
 * fzf (fuzzy finder)
 * htop (process monitor)
+* bottom (like htop)
+* dust (disk usage)
 
 ## Security
 * pass Password manager
