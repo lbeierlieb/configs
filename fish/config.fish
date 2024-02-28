@@ -26,6 +26,7 @@ if status is-interactive
 
     abbr --add l exa -lh
     abbr --add la exa -lah
+    abbr --add cat bat
 
     abbr --add pw openssl rand -base64 20
     abbr --add vpn sudo openvpn ovpn/secloud-vpn.ovpn

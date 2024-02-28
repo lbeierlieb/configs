@@ -6,6 +6,7 @@
 * fd (searching for filenames, instead of find)
 * zoxide (to navigate directories, instead of cd)
 * exa (to list directory contents, instead of ls)
+* bat (print file, instead of cat)
 * lazygit (git tui)
 * lf (terminal filemanager, imo better than ranger)
 * fish shell
