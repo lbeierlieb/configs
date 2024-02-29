@@ -1,7 +1,5 @@
 #pragma once
 
-//#define USE_MATRIX_I2C
-
 /* Select hand configuration */
 
 #define MASTER_LEFT
@@ -10,34 +8,12 @@
 
 #define QUICK_TAP_TERM 0
 #define TAPPING_TERM 200
-#define IGNORE_MOD_TAP_INTERRUPT
-
-#ifdef RGBLIGHT_ENABLE
-    #define RGBLIGHT_EFFECT_BREATHING
-    #define RGBLIGHT_EFFECT_RAINBOW_MOOD
-    #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
-    #define RGBLIGHT_EFFECT_SNAKE
-    #define RGBLIGHT_EFFECT_KNIGHT
-    #define RGBLIGHT_EFFECT_CHRISTMAS
-    #define RGBLIGHT_EFFECT_STATIC_GRADIENT
-    #define RGBLIGHT_EFFECT_RGB_TEST
-    #define RGBLIGHT_EFFECT_ALTERNATING
-    #define RGBLIGHT_EFFECT_TWINKLE
-    #define RGBLIGHT_LIMIT_VAL 120
-    #define RGBLIGHT_HUE_STEP 10
-    #define RGBLIGHT_SAT_STEP 17
-    #define RGBLIGHT_VAL_STEP 17
-#endif
+// #define IGNORE_MOD_TAP_INTERRUPT  -  no longer needed, set by default
 
 #define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
+#define SPLIT_LAYER_STATE_ENABLE
+// #define SPLIT_WPM_ENABLE //Enable WPM across split keyboards (+268).
+// #define NO_ACTION_ONESHOT
+// #define SPLIT_OLED_ENABLE
 
-//#undef MOUSEKEY_DELAY
-//#define MOUSEKEY_DELAY          0
-//#undef MOUSEKEY_INTERVAL
-//#define MOUSEKEY_INTERVAL       16
-//#undef MOUSEKEY_WHEEL_DELAY
-//#define MOUSEKEY_WHEEL_DELAY    0
-//#undef MOUSEKEY_MAX_SPEED
-//#define MOUSEKEY_MAX_SPEED      6
-//#undef MOUSEKEY_TIME_TO_MAX
-//#define MOUSEKEY_TIME_TO_MAX    64
+// #define DYNAMIC_KEYMAP_LAYER_COUNT 6
