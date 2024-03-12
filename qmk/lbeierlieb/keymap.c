@@ -211,6 +211,9 @@ void oled_render_layer_state(void) {
         case 0b1000000000:
             oled_write_ln_P(PSTR("Minecraft"), false);
             break;
+        case 0b10000000000:
+            oled_write_ln_P(PSTR("Colemak-DH"), false);
+            break;
     }
 }
 
