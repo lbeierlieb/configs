@@ -18,6 +18,7 @@
 * bottom (like htop)
 * dust (disk usage)
 * bandwhich (network monitor)
+* gping (ping with latency plot)
 
 ## Security
 * pass Password manager
