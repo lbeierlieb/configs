@@ -19,6 +19,7 @@
 * dust (disk usage)
 * bandwhich (network monitor)
 * gping (ping with latency plot)
+* kmon (kernel monitoring)
 
 ## Security
 * pass Password manager
